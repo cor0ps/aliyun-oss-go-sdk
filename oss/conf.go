@@ -116,15 +116,15 @@ func (defBuild *EnvironmentVariableCredentialsProvider) GetCredentials() Credent
 
 func NewEnvironmentVariableCredentialsProvider() (EnvironmentVariableCredentialsProvider, error) {
 	var provider EnvironmentVariableCredentialsProvider
-	accessID := os.Getenv("OSS_ACCESS_KEY_ID")
+	accessID := os.Getenv("ACCESS_KEY_ID")
 	if accessID == "" {
 		return provider, fmt.Errorf("access key id is empty!")
 	}
-	accessKey := os.Getenv("OSS_ACCESS_KEY_SECRET")
+	accessKey := os.Getenv("ACCESS_KEY_SECRET")
 	if accessKey == "" {
 		return provider, fmt.Errorf("access key secret is empty!")
 	}
-	token := os.Getenv("OSS_SESSION_TOKEN")
+	token := os.Getenv("SECURITY_TOKEN")
 	envCredential := &envCredentials{
 		AccessKeyId:     accessID,
 		AccessKeySecret: accessKey,
